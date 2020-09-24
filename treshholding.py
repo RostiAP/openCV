@@ -5,8 +5,8 @@ cam = cv2.VideoCapture(0)
 x, y, w, h = 270, 190, 100, 100
 white = (255, 255, 255)
 
-lower_color = (130, 140, 140)
-upper_color = (140, 150, 150)
+lower_color = (10, 150, 110)
+upper_color = (50, 210, 220)
 
 while cam.isOpened():
     ret, frame = cam.read()
@@ -24,6 +24,6 @@ while cam.isOpened():
     cv2.imshow('Video', frame)
     cv2.imshow('Mask', mask)
 
-    if cv2.waitKey(1) & 0xFF == 27:
+    if cv2.waitKey(0) & 0xFF == 27:
         break
 
