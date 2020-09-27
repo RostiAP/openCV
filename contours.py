@@ -11,9 +11,9 @@ while cam.isOpened():
     if not ret:
         raise ValueError('No video')
 
-    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+    hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
-    mask = cv2.inRange(frame, lower_color, upper_color)
+    mask = cv2.inRange(hsv_frame, lower_color, upper_color)
 
     contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
