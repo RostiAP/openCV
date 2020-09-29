@@ -1,10 +1,11 @@
 import cv2
 import numpy as np
 
+img = cv2.imread('Sources/butterfly.JPG')
 cam = cv2.VideoCapture(0)
 
-lower_color = (10, 150, 110)
-upper_color = (50, 210, 220)
+lower_color = (150, 90, 100)
+upper_color = (190, 140, 170)
 
 while cam.isOpened():
     ret, frame = cam.read()
@@ -21,12 +22,12 @@ while cam.isOpened():
         max_cnt = max(contours, key=cv2.contourArea)
 
         x, y, w, h = cv2.boundingRect(max_cnt)
-        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), thickness=3)
+        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), thickness=1)
 
         rect = cv2.minAreaRect(max_cnt)
         box = cv2.boxPoints(rect)
         box = np.int0(box)
-        cv2.drawContours(frame, [box], 0, (0, 0, 255), 2)
+        cv2.drawContours(frame, [box], 0, (0, 0, 255), 1)
 
     cv2.imshow('Video', frame)
 
